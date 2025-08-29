@@ -1,6 +1,6 @@
-==================
+
   RAGlog - Script de Pós-Instalação para Arch Linux
-==================================================
+
 
 
 SOBRE O SCRIPT
