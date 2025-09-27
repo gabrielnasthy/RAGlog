@@ -57,7 +57,7 @@ WALLPAPER_ENGINE_DEPS=(
 
 # --- Listas de Pacotes para Interfaces Gráficas ---
 KDE_APP_INSTALL=(
-    wget nano plasma-desktop plasma-wayland-session plasma-nm plasma-framework plasma-pa kate gwenview kscreen powerdevil sddm dolphin dolphin-plugins noto-fonts-emoji ffmpegthumbnailer ffmpegthumbs tilix spectacle plasma-integration plasma-workspace kded kwayland kwayland-integration systemsettings plasma-workspace-wallpapers ntfs-3g ark ffmpeg gst-plugins-ugly gst-plugins-good gst-plugins-base gst-plugins-bad gst-libav gstreamer btrfs-progs kio-gdrive neofetch htop grub-customizer gufw fwupd xorg-server xorg-xinit xorg-apps mesa pulseaudio alsa-utils pulseaudio-bluetooth
+    wget nano plasma-desktop plasma-wayland-session plasma-nm plasma-framework plasma-pa kate gwenview kscreen powerdevil sddm dolphin dolphin-plugins noto-fonts-emoji ffmpegthumbnailer ffmpegthumbs tilix spectacle plasma-integration plasma-workspace kded kwayland kwayland-integration systemsettings plasma-workspace-wallpapers ntfs-3g ark ffmpeg gst-plugins-ugly gst-plugins-good gst-plugins-base gst-plugins-bad gst-libav gstreamer btrfs-progs kio-gdrive neofetch htop grub-customizer gufw fwupd xorg-server xorg-xinit xorg-apps mesa pulseaudio alsa-utils pulseaudio-bluetooth packagekit-qt5 archlinux-appstream-data
 )
 GNOME_APP_INSTALL=(
     gnome gnome-extra gnome-shell gnome-terminal nautilus gnome-control-center gnome-tweaks gnome-calculator gnome-system-monitor evince gedit gnome-software file-roller gnome-screenshot gnome-disk-utility gnome-keyring gvfs networkmanager pulseaudio pulseaudio-bluetooth
@@ -74,7 +74,56 @@ I3WM_APP_INSTALL=(
 
 # --- Lista de Pacotes do YAY/AUR ---
 YAY_APP_INSTALL=(
-    visual-studio-code-bin mysql-workbench xampp discord balena-etcher steam heroic-games-launcher lutris anydesk-bin obs-studio kdenlive spotify github-desktop-bin piper portmaster-stub-bin whatsapp-electron-bin atlauncher arduino wine-staging winetricks wine-mono wine-gecko giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader
+    # Aplicativos de Produtividade e Desenvolvimento
+    visual-studio-code-bin
+    mysql-workbench
+    xampp
+    github-desktop-bin
+    anydesk-bin
+    # Comunicação e Social
+    discord
+    whatsapp-electron-bin
+    # Jogos e Lançadores
+    steam
+    heroic-games-launcher
+    lutris
+    atlauncher
+    # Utilitários e Multimídia
+    balena-etcher
+    obs-studio
+    kdenlive
+    spotify
+    piper # Para configurar mouses gamer
+    portmaster-stub-bin # Firewall de aplicativos
+    # Outros
+    arduino
+    # Dependências completas do Wine (unificadas aqui)
+    wine-staging
+    winetricks
+    wine-mono
+    wine-gecko
+    giflib lib32-giflib
+    libpng lib32-libpng
+    libldap lib32-libldap
+    gnutls lib32-gnutls
+    mpg123 lib32-mpg123
+    openal lib32-openal
+    v4l-utils lib32-v4l-utils
+    libpulse lib32-libpulse
+    libgpg-error lib32-libgpg-error
+    alsa-plugins lib32-alsa-plugins
+    alsa-lib lib32-alsa-lib
+    libjpeg-turbo lib32-libjpeg-turbo
+    sqlite lib32-sqlite
+    libxcomposite lib32-libxcomposite
+    libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama
+    ncurses lib32-ncurses
+    opencl-icd-loader lib32-opencl-icd-loader
+    libxslt lib32-libxslt
+    libva lib32-libva
+    gtk3 lib32-gtk3
+    gst-plugins-base-libs lib32-gst-plugins-base-libs
+    vulkan-icd-loader lib32-vulkan-icd-loader
 )
 
 
@@ -89,19 +138,6 @@ erro() {
 # Exibe uma mensagem de informação.
 info() {
     echo -e "${VERDE}[INFO] - $1${SEM_COR}"
-}
-
-# Exibe uma animação de carregamento simples.
-show_loading() {
-    local message=$1
-    local spin_chars="/-\|"
-    echo -n "$message "
-    for ((i = 0; i < 15; i++)); do
-        echo -n "${spin_chars:i%4:1}"
-        sleep 0.1
-        echo -ne "\b"
-    done
-    echo " Concluído!"
 }
 
 # Instala uma lista de pacotes usando o gerenciador de pacotes especificado (pacman ou yay).
@@ -167,14 +203,14 @@ preparar_sistema() {
 # Exibe o cabeçalho do script.
 cabecalho() {
     clear
-    echo "                                                                                                         ";
+    echo "                                                                                                        ";
     echo " █████╗ ██████╗  ██████╗██╗  ██╗███████╗██╗███╗   ██╗███████╗████████╗██╗   ██╗███╗   ██╗███████╗██████╗ ";
     echo "██╔══██╗██╔══██╗██╔════╝██║  ██║██╔════╝██║████╗  ██║██╔════╝╚══██╔══╝██║   ██║████╗  ██║██╔════╝██╔══██╗";
     echo "███████║██████╔╝██║     ███████║█████╗  ██║██╔██╗ ██║█████╗     ██║   ██║   ██║██╔██╗ ██║█████╗  ██████╔╝";
     echo "██╔══██║██╔══██╗██║     ██╔══██║██╔══╝  ██║██║╚██╗██║██╔══╝     ██║   ██║   ██║██║╚██╗██║██╔══╝  ██╔══██╗";
     echo "██║  ██║██║  ██║╚██████╗██║  ██║██║     ██║██║ ╚████║███████╗   ██║   ╚██████╔╝██║ ╚████║███████╗██║  ██║";
     echo "╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═══╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝";
-    echo "                                                                                                         ";
+    echo "                                                                                                        ";
 }
 
 # Instala o Paru (AUR Helper) se ainda não estiver instalado.
@@ -322,7 +358,7 @@ ativar_servicos_essenciais() {
 # Menu para instalação de um navegador web.
 instalar_navegador() {
     echo "---------------------------------------------"
-    echo "|        Escolha o seu Navegador           |"
+    echo "|         Escolha o seu Navegador           |"
     echo "---------------------------------------------"
     local i=1
     local opcoes=()
@@ -353,14 +389,14 @@ instalar_wallpaper_engine() {
     cmake .. -DUSE_PLASMAPKG=ON || erro "Falha no cmake."
     make -j"$(nproc)" || erro "Falha na compilação."
     sudo make install || erro "Falha na instalação."
-    info "Wallpaper Engine para KDE instalado!"
+    info "Wallpaper Engine para KDE instalado! Reinicie a sessão para aplicar."
     cd "$DIR" && rm -rf wallpaper-engine-kde-plugin
 }
 
 # Menu para escolher e instalar uma interface gráfica.
 escolher_interface() {
     echo "---------------------------------------------"
-    echo "|     Escolha uma Interface Gráfica (DE)    |"
+    echo "|   Escolha uma Interface Gráfica (DE)      |"
     echo "---------------------------------------------"
     echo "1) KDE Plasma"
     echo "2) GNOME"
@@ -400,7 +436,7 @@ instalar_kernel() {
 # Menu para escolher e instalar um Kernel.
 menu_kernels() {
     echo "---------------------------------------------"
-    echo "|         Escolha um Kernel para Instalar         |"
+    echo "|      Escolha um Kernel para Instalar      |"
     echo "---------------------------------------------"
     for key in "${!KERNELS[@]}"; do echo "$key) ${KERNELS[$key]}"; done
     echo "q) Voltar"
@@ -421,6 +457,23 @@ instalar_apps_yay() {
     instalar_pacotes "yay" "${YAY_APP_INSTALL[@]}"
 }
 
+# (NOVA FUNÇÃO) - Menu para instalar lojas de aplicativos.
+instalar_lojas_app() {
+    echo "---------------------------------------------"
+    echo "|      Escolha uma Loja de Aplicativos      |"
+    echo "---------------------------------------------"
+    echo "1) Pamac (Loja do Manjaro)"
+    echo "2) Octopi (Leve, baseada em Qt)"
+    echo "q) Voltar"
+    read -rp "Opção: " opcao
+    case $opcao in
+        1) instalar_pacotes "yay" "pamac-aur" "libpamac-aur" ;;
+        2) instalar_pacotes "yay" "octopi" ;;
+        q) info "Voltando ao menu." ;;
+        *) echo -e "${VERMELHO}Opção inválida.${SEM_COR}" ;;
+    esac
+}
+
 #-------------------------------------------| Menu Principal |-----------------------------------------------#
 
 main_menu() {
@@ -428,6 +481,7 @@ main_menu() {
       instalar_paru adicionar_repo_chaotic escolher_interface instalar_drivers_graficos 
       instalar_navegador menu_kernels instalar_zsh_e_plugins instalar_apps_yay 
       instalar_tema_grub criar_chave_gpg instalar_wallpaper_engine ativar_servicos_essenciais
+      instalar_lojas_app
   )
 
   while true; do
@@ -441,11 +495,12 @@ main_menu() {
     echo "7) Instalar ZSH e Plugins"
     echo "8) Instalar Programas Padrão (AUR/YAY)"
     echo "9) Instalar Tema DedSec para o GRUB"
-    echo "10) Criar Chave GPG"
+    echo "10) Criar Chave GPG (para KWallet/Github)"
     echo "11) Instalar Wallpaper Engine (KDE)"
-    echo "12) Ativar Serviços Essenciais"
+    echo "12) Ativar Serviços Essenciais (Rede, Bluetooth, SDDM)"
+    echo "13) Instalar Lojas de Aplicativos (Pamac, Octopi)"
     echo "---------------------------------------------"
-    echo "13) RODAR TUDO (Recomendado para primeira vez)"
+    echo "14) RODAR TUDO (Recomendado para primeira vez)"
     echo "q) Sair"
 
     read -rp "Escolha uma opção: " opcao
@@ -463,7 +518,8 @@ main_menu() {
       10) criar_chave_gpg ;;
       11) instalar_wallpaper_engine ;;
       12) ativar_servicos_essenciais ;;
-      13)
+      13) instalar_lojas_app ;;
+      14)
         for funcao in "${todas_funcoes[@]}"; do
             "$funcao"
             if [[ $? -ne 0 ]]; then
